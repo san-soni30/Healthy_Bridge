@@ -36,6 +36,7 @@ export default function Blog() {
 
 
   return (
+    <div>
     <section id="blog" className="py-16 max-w-6xl mx-auto px-6">
       <h3 className="text-3xl font-bold text-green-700 text-center mb-12">
         Latest Blogs
@@ -76,5 +77,6 @@ export default function Blog() {
         ))}
       </div>
     </section>
+    </div>
   );
 }

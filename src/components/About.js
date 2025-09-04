@@ -3,6 +3,7 @@ import dieticianImage from "../assets/dietician.jpg";
 
 export default function About() {
   return (
+    <div>
     <section id="about" className="py-16 max-w-5xl mx-auto px-6">
       <div className="grid md:grid-cols-2 gap-1 items-center ">
         <img
@@ -27,5 +28,6 @@ export default function About() {
         </div>
       </div>
     </section>
+    </div>
   );
 }

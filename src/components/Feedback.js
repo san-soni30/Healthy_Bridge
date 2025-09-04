@@ -17,6 +17,7 @@ export default function Feedback() {
   ];
 
   return (
+    <div>
     <section id="feedback" className="py-16 bg-green-50">
       <h3 className="text-2xl md:text-3xl font-bold text-green-700 text-center mb-10">
         Client Feedback
@@ -74,5 +75,6 @@ export default function Feedback() {
         <div className="custom-pagination flex justify-center mt-6 space-x-2"></div>
       </div>
     </section>
+    </div>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 export default function Appointment() {
   const [dob, setDob] = useState("");
   const [age, setAge] = useState("");
@@ -29,6 +30,7 @@ export default function Appointment() {
   };
 
   return (
+    <div>
     <section id="appointment" className="py-16 bg-green-50 px-6">
       <div className="max-w-4xl mx-auto">
         <h3 className="text-3xl font-bold text-green-700 text-center mb-10">
@@ -47,7 +49,7 @@ export default function Appointment() {
               className="w-full p-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
             />
           </div>
-{/* Email */}
+          {/* Email */}
           <div>
             <label className="block text-gray-700 font-medium mb-2">
               Email Address
@@ -130,5 +132,6 @@ export default function Appointment() {
         </form>
       </div>
     </section>
+    </div>
   );
 }

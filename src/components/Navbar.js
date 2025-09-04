@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { User } from "lucide-react";
+import { NavLink } from "react-router-dom";
 import Login from "./Login";
 import Signup from "./Signup";
 
@@ -20,15 +21,60 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 w-full bg-white shadow-md z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-       
-        <h1 className="text-3xl font-bold text-green-600">NutriFit</h1>
+        <h1 className="text-3xl font-bold text-green-600"><NavLink to="/" >
+          NutriFit</NavLink></h1>
 
         <ul className="hidden md:flex space-x-6 text-gray-700 font-medium">
-          <li><a href="#about">About</a></li>
-          <li><a href="#appointment">Appointment</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <li><a href="#feedback">Feedback</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                isActive ? "text-green-600 font-semibold" : "hover:text-green-600"
+              }
+            >
+              About
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/appointment"
+              className={({ isActive }) =>
+                isActive ? "text-green-600 font-semibold" : "hover:text-green-600"
+              }
+            >
+              Appointment
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/blog"
+              className={({ isActive }) =>
+                isActive ? "text-green-600 font-semibold" : "hover:text-green-600"
+              }
+            >
+              Blog
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/feedback"
+              className={({ isActive }) =>
+                isActive ? "text-green-600 font-semibold" : "hover:text-green-600"
+              }
+            >
+              Feedback
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                isActive ? "text-green-600 font-semibold" : "hover:text-green-600"
+              }
+            >
+              Contact
+            </NavLink>
+          </li>
         </ul>
 
         <div className="flex items-center space-x-4">
@@ -42,12 +88,12 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Login & Signup */}
       <Login
         isOpen={isLoginOpen}
         onClose={() => setIsLoginOpen(false)}
         onSignup={openSignup}
       />
-
       <Signup
         isOpen={isSignupOpen}
         onClose={() => setIsSignupOpen(false)}
