@@ -8,7 +8,7 @@ export default function Contact() {
         Get in Touch
       </h3>
       <form className="space-y-4">
-        {/* Email */}
+        {/* Full Name */}
         <div>
           <label className="block text-gray-700 font-medium mb-2">
             Full Name
@@ -16,7 +16,7 @@ export default function Contact() {
           <input
             type="text"
             placeholder="Enter your name"
-            className="w-full p-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+            className="w-full p-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none" required
           />
         </div>
         {/* Email */}
@@ -27,18 +27,40 @@ export default function Contact() {
           <input
             type="email"
             placeholder="Enter your email"
-            className="w-full p-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+            className="w-full p-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none" required
           />
         </div>
-        {/* Address (full width) */}
+        {/* Phone no. */}
         <div className="md:col-span-2">
           <label className="block text-gray-700 font-medium mb-2">
-            Address
+            Phone No.
+          </label>
+          <input
+            type="tel"
+            placeholder="Enter your phone no."
+            className="w-full p-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none" required
+          />
+        </div>
+        {/* Subject */}
+        <div className="md:col-span-2">
+          <label className="block text-gray-700 font-medium mb-2">
+            SUbject
+          </label>
+          <textarea
+            rows="1"
+            placeholder="Enter Subject"
+            className="w-full p-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+          ></textarea>
+        </div>
+        {/* Message */}
+        <div className="md:col-span-2">
+          <label className="block text-gray-700 font-medium mb-2">
+            Message
           </label>
           <textarea
             rows="3"
-            placeholder="Enter your address"
-            className="w-full p-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+            placeholder="Enter Message"
+            className="w-full p-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none" required
           ></textarea>
         </div>
         {/* Submit Button */}
