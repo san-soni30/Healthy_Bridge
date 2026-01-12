@@ -29,3 +29,19 @@ body {
   background-color: #16a34a !important; /* Tailwind green-700 */
   opacity: 1;
 }
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 2s ease-in-out infinite;
+}

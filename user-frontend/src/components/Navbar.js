@@ -19,10 +19,15 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-white shadow-md z-50">
+    <nav className="fixed top-0 w-full bg-green-100  shadow-md z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-green-600"><NavLink to="/" >
-          NutriFit</NavLink></h1>
+        <h1 className="text-3xl font-bold">
+  <NavLink to="/" className="flex items-center gap-1">
+    <span className="text-green-600">Healthy</span>
+    <span className="text-gray-800">Bridge</span>
+  </NavLink>
+</h1>
+
 
         <ul className="hidden md:flex space-x-6 text-gray-700 font-medium">
           <li>
