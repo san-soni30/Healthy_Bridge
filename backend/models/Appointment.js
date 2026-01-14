@@ -51,12 +51,8 @@ const appointmentSchema = new mongoose.Schema({
 
 },
    {
-      timestamps: { 
-         createdAt: "submittedAt", 
-         updatedAt: false 
-      }
-
-   }
+    timestamps: true, 
+  }
 );
 
 module.exports = mongoose.model("Appointment", appointmentSchema);

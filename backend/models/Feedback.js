@@ -17,12 +17,8 @@ const feedbackSchema = new mongoose.Schema({
    },
 },
    {
-      timestamps: { 
-         createdAt: "submittedAt", 
-         updatedAt: false 
-      }
-
-   }
+    timestamps: true, 
+  }
 )
 
 module.exports = mongoose.model("Feedback", feedbackSchema);
