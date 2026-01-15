@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 // User Registration
 exports.register = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, role } = req.body;
 
     const existingUser = await User.findOne({ email: email.toLowerCase() });
     
@@ -16,7 +16,7 @@ exports.register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await User.create({
-      name, email, password: hashedPassword
+      name, email, password: hashedPassword, role
     });
 
     res.status(201).json({
@@ -57,7 +57,7 @@ exports.login = async (req, res) => {
         role: user.role, // role embedded in token
       },
       process.env.JWT_SECRET,
-      { expiresIn: "7d" }
+      { expiresIn: "2d" }
     );
 
     res.status(200).json({
@@ -77,7 +77,7 @@ exports.login = async (req, res) => {
 };
 
 // User Profile
-exports.getProfile = async (req, res) => {
+exports.getProfileById = async (req, res) => {
   try {
     const user = await User.findById((req.user.id)).select('-password');
     if (!user || !user.isActive) {
