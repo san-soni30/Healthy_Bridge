@@ -11,12 +11,27 @@ const blogSchema = new mongoose.Schema({
       trim: true,
    },
    image: {
-      type: String,
+      url: String,
+      public_id: String
    },
    tags: {
       type: [String],
       default: []
    },
+   likes: [
+      {
+         type: mongoose.Schema.Types.ObjectId,  // prevents duplicate likes
+         ref: "User",
+      }
+   ],
+   likesCount: {  //Fast UI rendering
+      type: Number,
+      default: 0,
+   },
+   //    shares: {
+   //   type: Number,
+   //   default: 0,
+   // },
 },
    {
       timestamps: true,
