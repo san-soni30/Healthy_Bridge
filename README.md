@@ -1,4 +1,4 @@
-# NutriFit
+# HealthyBridge
 
 A modular, frontend-focused web application for personalized nutrition management—featuring separate **Admin** and **User** interfaces.
 
@@ -20,7 +20,7 @@ A modular, frontend-focused web application for personalized nutrition managemen
 
 ## Overview
 
-**NutriFit** is a JavaScript-based web application designed with a nutrition and fitness theme. There are two primary interfaces:
+**HealthyBridge** is a JavaScript-based web application designed with a nutrition and fitness theme. There are two primary interfaces:
 - `admin-frontend`: For administrators to manage users, meal plans, and analytics.
 - `user-frontend`: For end-users to view meal recommendations, track progress, and manage their nutrition plans.
 
@@ -51,8 +51,8 @@ A modular, frontend-focused web application for personalized nutrition managemen
 
 
 # Clone the repository
-git clone https://github.com/san-soni30/NutriFit.git
-cd NutriFit
+git clone https://github.com/san-soni30/Healthy_Bridge.git
+cd Healthy_Bridge
 
 # Setup Admin UI
 cd admin-frontend
@@ -70,7 +70,7 @@ npm start  # Runs on http://localhost:3000 (example)
 ## Folder Structure
 
 
-NutriFit/
+Healthy_Bridge/
 ├── admin-frontend/
 │   ├── src/
 │   ├── public/
