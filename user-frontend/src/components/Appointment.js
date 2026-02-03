@@ -1,137 +1,207 @@
 import React, { useState } from "react";
 
-
 export default function Appointment() {
-  const [dob, setDob] = useState("");
-  const [age, setAge] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    dob: "",
+    age: "",
+    address: "",
+    consultationType: "offline",
+    appointmentDate: "",
+    timeSlot: "",
+  });
 
-  // Function to calculate age from DOB
+  // Calculate age from DOB
   const handleDobChange = (e) => {
-    const selectedDob = e.target.value;
-    setDob(selectedDob);
+    const dob = e.target.value;
+    let age = "";
 
-    if (selectedDob) {
-      const birthDate = new Date(selectedDob);
+    if (dob) {
+      const birthDate = new Date(dob);
       const today = new Date();
-      let calculatedAge = today.getFullYear() - birthDate.getFullYear();
-      const monthDiff = today.getMonth() - birthDate.getMonth();
-
-      if (
-        monthDiff < 0 ||
-        (monthDiff === 0 && today.getDate() < birthDate.getDate())
-      ) {
-        calculatedAge--;
+      age = today.getFullYear() - birthDate.getFullYear();
+      const m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
       }
-
-      setAge(calculatedAge);
-    } else {
-      setAge("");
     }
+
+    setFormData({ ...formData, dob, age });
   };
 
+  // Generic input handler
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const timeSlots = [
+    "09:00-09:30",
+    "09:30-10:00",
+    "10:00-10:30",
+    "10:30-11:00",
+    "11:00-11:30",
+    "11:30-12:00",
+    "16:00-16:30",
+    "16:30-17:00",
+    "17:00-17:30",
+  ];
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData); // send to backend
+  };
+const inputClass =
+  "w-full p-3 border rounded-md outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500";
+
   return (
-    <div>
-    <section id="appointment" className="py-16 bg-green-50 px-6">
+    <section className="py-16 bg-green-50 px-6">
       <div className="max-w-4xl mx-auto">
         <h3 className="text-3xl font-bold text-green-700 text-center mb-10">
           Book an Appointment
         </h3>
 
-        <form className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white shadow-lg rounded-xl p-8">
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white shadow-lg rounded-xl p-8"
+        >
           {/* Name */}
           <div>
-            <label className="block text-gray-700 font-medium mb-2">
-              Full Name
-            </label>
+            <label className="font-medium text-gray-700">Full Name</label>
             <input
-              type="text"
-              placeholder="Enter your name"
-              className="w-full p-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+              name="name"
+              required
+              value={formData.name}
+              onChange={handleChange}
+              className={inputClass}
             />
           </div>
+
           {/* Email */}
           <div>
-            <label className="block text-gray-700 font-medium mb-2">
-              Email Address
-            </label>
+            <label className="font-medium text-gray-700">Email</label>
             <input
               type="email"
-              placeholder="Enter your email"
-              className="w-full p-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+              name="email"
+              required
+              value={formData.email}
+              onChange={handleChange}
+              className={inputClass}
             />
           </div>
 
           {/* DOB */}
           <div>
-            <label className="block text-gray-700 font-medium mb-2">
-              Date of Birth
-            </label>
+            <label className="font-medium text-gray-700">Date of Birth</label>
             <input
               type="date"
-              value={dob}
+              name="dob"
+              required
+              value={formData.dob}
               onChange={handleDobChange}
-              className="w-full p-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+              className={inputClass}
             />
           </div>
 
           {/* Age */}
           <div>
-            <label className="block text-gray-700 font-medium mb-2">Age</label>
+            <label className="font-medium text-gray-700">Age</label>
             <input
-              type="text"
-              value={age ? `${age} years` : ""}
-              placeholder="Auto-calculated"
+              value={formData.age ? `${formData.age} years` : ""}
               readOnly
-              className="w-full p-3 border rounded-md bg-gray-100 text-gray-600"
+              className={inputClass}
             />
           </div>
 
           {/* Phone */}
           <div>
-            <label className="block text-gray-700 font-medium mb-2">
-              Phone Number
-            </label>
+            <label className="font-medium text-gray-700">Phone</label>
             <input
               type="tel"
-              placeholder="Enter phone number"
-              className="w-full p-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+              name="phone"
+              required
+              value={formData.phone}
+              onChange={handleChange}
+              className={inputClass}
             />
           </div>
 
-          
+          {/* Consultation Type */}
+          <div>
+            <label className="font-medium text-gray-700">
+              Consultation Type
+            </label>
+            <select
+              name="consultationType"
+              value={formData.consultationType}
+              onChange={handleChange}
+              className={inputClass}
+            >
+              <option value="offline">Offline</option>
+              <option value="online">Online (Video Call)</option>
+            </select>
+          </div>
 
           {/* Appointment Date */}
           <div>
-            <label className="block text-gray-700 font-medium mb-2">
+            <label className="font-medium text-gray-700">
               Appointment Date
             </label>
             <input
               type="date"
-              className="w-full p-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+              name="appointmentDate"
+              required
+              value={formData.appointmentDate}
+              onChange={handleChange}
+              className={inputClass}
             />
           </div>
 
-          {/* Address (full width) */}
+          {/* Time Slot (Only Online) */}
+          {formData.consultationType === "online" && (
+            <div>
+              <label className="font-medium text-gray-700">Time Slot</label>
+              <select
+                name="timeSlot"
+                required
+                value={formData.timeSlot}
+                onChange={handleChange}
+                className={inputClass}>
+                <option value="">Select Time Slot</option>
+                {timeSlots.map((slot) => (
+                  <option key={slot} value={slot}>
+                    {slot}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {/* Address */}
           <div className="md:col-span-2">
-            <label className="block text-gray-700 font-medium mb-2">
-              Address
-            </label>
+            <label className="font-medium text-gray-700">Address</label>
             <textarea
+              name="address"
+              required
               rows="3"
-              placeholder="Enter your address"
-              className="w-full p-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
-            ></textarea>
+              value={formData.address}
+              onChange={handleChange}
+              className={inputClass}
+            />
           </div>
 
-          {/* Submit Button */}
+          {/* Submit */}
           <div className="md:col-span-2 text-center">
-            <button className="bg-green-600 text-white px-8 py-3 rounded-lg shadow-md hover:bg-green-700 transition-transform transform hover:scale-105 duration-300">
-              Submit
+            <button
+              type="submit"
+              className="bg-green-600 text-white px-10 py-3 rounded-lg hover:bg-green-700 transition"
+            >
+              Book Appointment
             </button>
           </div>
         </form>
       </div>
     </section>
-    </div>
   );
 }
